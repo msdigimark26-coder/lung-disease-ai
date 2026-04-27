@@ -448,6 +448,14 @@ def create_app(config_name='development'):
     # React Portal Routes
     # ─────────────────────────────────────────────────────────────────────────
     @app.route('/doctor')
+    @app.route('/vitals')
+    @app.route('/analysis')
+    @app.route('/alerts')
+    @app.route('/patients')
+    @app.route('/settings')
+    @app.route('/upgrade')
+    @app.route('/notifications')
+    @app.route('/download')
     @app.route('/patient/<path:id>')
     @login_required
     def portal_routes(id=None):

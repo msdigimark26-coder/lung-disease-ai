@@ -1,7 +1,8 @@
-import { Bell, Search, Zap } from "lucide-react";
+import { Bell, Search, Zap, DownloadCloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Link } from "react-router-dom";
 
 export function Header() {
     return (
@@ -26,10 +27,19 @@ export function Header() {
                     </span>
                 </div>
 
-                <Button variant="ghost" size="icon" className="text-slate-500 relative bg-slate-50 hover:bg-slate-100 rounded-full w-10 h-10">
-                    <Bell className="w-5 h-5" />
-                    <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
-                </Button>
+                <Link to="/download">
+                    <Button variant="outline" className="hidden md:flex items-center gap-2 bg-white hover:bg-slate-50 border-slate-200 text-slate-700 font-semibold rounded-xl h-10 mr-1 shadow-sm">
+                        <DownloadCloud className="w-4 h-4 text-blue-600" />
+                        Download App
+                    </Button>
+                </Link>
+
+                <Link to="/notifications">
+                    <Button variant="ghost" size="icon" className="text-slate-500 relative bg-slate-50 hover:bg-slate-100 rounded-full w-10 h-10">
+                        <Bell className="w-5 h-5" />
+                        <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                    </Button>
+                </Link>
 
                 <div className="h-8 w-[1px] bg-slate-200 mx-2" />
 

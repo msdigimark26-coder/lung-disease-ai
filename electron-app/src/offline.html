@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungAI - Offline</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 400px;
+        }
+        .icon {
+            font-size: 64px;
+            color: #ef4444;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+        p {
+            color: #64748b;
+            margin: 0 0 30px 0;
+            line-height: 1.5;
+        }
+        button {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #0284c7;
+        }
+        .loader {
+            display: none;
+            margin-top: 15px;
+            color: #0ea5e9;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">⚠️</div>
+        <h1>Server Offline</h1>
+        <p>The LungAI local server (port 5001) could not be reached. Please ensure the backend is running.</p>
+        <button id="retryBtn">Retry Connection</button>
+        <div id="loader" class="loader">Attempting to reconnect...</div>
+    </div>
+
+    <script>
+        document.getElementById('retryBtn').addEventListener('click', () => {
+            document.getElementById('retryBtn').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+            
+            // Wait a sec before sending reload command
+            setTimeout(() => {
+                if (window.electronAPI) {
+                    window.electronAPI.reloadApp();
+                } else {
+                    window.location.reload();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

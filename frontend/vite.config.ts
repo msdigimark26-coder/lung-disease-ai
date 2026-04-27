@@ -10,4 +10,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:5001',
+      '/login': 'http://localhost:5001',
+      '/logout': 'http://localhost:5001',
+      '/register': 'http://localhost:5001',
+      '/doctor': 'http://localhost:5001',
+      '/patient': 'http://localhost:5001',
+      '/static': 'http://localhost:5001',
+      '/assets': 'http://localhost:5001',
+    },
+  },
 })

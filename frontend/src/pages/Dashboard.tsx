@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Header } from "@/components/layout/Header";
+import { useState } from "react";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { PatientSelector } from "@/components/dashboard/PatientSelector";
 import { VitalsChart } from "@/components/dashboard/VitalsChart";
@@ -26,10 +24,6 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 export default function DashboardPage() {
-    useEffect(() => {
-        document.title = "Doctor Portal | LungAI — AI-Powered Lung Disease Detection";
-    }, []);
-
     const {
         stats,
         patients,
@@ -43,19 +37,9 @@ export default function DashboardPage() {
     const [isNewAnalysisOpen, setIsNewAnalysisOpen] = useState(false);
 
     return (
-        <div className="flex h-screen bg-slate-50 overflow-hidden font-inter">
-            <Sidebar className="w-80 hidden lg:flex" />
-
-            <div className="flex-1 flex flex-col overflow-hidden relative">
-                <Header />
-
-                <main className="flex-1 overflow-y-auto p-8 pt-6 relative">
-                    {/* Animated Background Gradients */}
-                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-100/30 rounded-full blur-[120px] -z-10 animate-pulse" />
-                    <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-100/20 rounded-full blur-[120px] -z-10" />
-
-                    {/* Hero Section */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+        <>
+            {/* Hero Section */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
                         <div>
                             <div className="flex items-center gap-2 mb-2">
                                 <CalendarCheck2 className="w-4 h-4 text-blue-600" />
@@ -253,8 +237,7 @@ export default function DashboardPage() {
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
+
 
             <AddPatientModal
                 open={isAddPatientOpen}
@@ -267,6 +250,6 @@ export default function DashboardPage() {
                 patients={patients}
                 defaultPatientId={selectedPatientId || undefined}
             />
-        </div>
+        </>
     );
 }
